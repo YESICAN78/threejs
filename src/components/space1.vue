@@ -2,7 +2,7 @@
  * @Author: SunFulin
  * @Version: 2.0
  * @createDate: Do not edit
- * @LastEditTime: 2021-10-16 21:58:24
+ * @LastEditTime: 2022-03-02 22:17:25
 -->
 <template>
   <div id="space"></div>
@@ -10,8 +10,8 @@
 
 <script>
 import * as THREE from "three";
-import { MapControls } from "three/examples/jsm/controls/OrbitControls";
 import * as geolib from "geolib";
+import { MapControls } from "three/examples/jsm/controls/OrbitControls";
 import Stats from "three/examples/jsm/libs/stats.module";
 import { BufferGeometryUtils } from "three/examples/jsm/utils/BufferGeometryUtils";
 
@@ -90,7 +90,7 @@ export default {
         new THREE.Color(0x555555),
         new THREE.Color(0x333333)
       );
-      this.scene.add(gh);
+      // this.scene.add(gh);
 
       // 初始化渲染器
       this.renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -320,7 +320,10 @@ export default {
     },
     Fire(mouse) {
       this.raycaster.setFromCamera(mouse, this.camera);
-      const intersects = this.raycaster.intersectObjects(this.Collider_building, true);
+      const intersects = this.raycaster.intersectObjects(
+        this.Collider_building,
+        true
+      );
 
       if (intersects && intersects.length) {
         return intersects[0].object;
@@ -335,6 +338,5 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 #space {
-  height: 100vh;
 }
 </style>
